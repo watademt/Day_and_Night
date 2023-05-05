@@ -9,8 +9,6 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float gravityDis = 0.4f;
 
-    private float turnSmoothTime = 0.1f;
-    private float turnSmoothVelocity;
     private float mouseSens = 100f;
 
     [SerializeField] private Transform camRoot;
@@ -49,8 +47,9 @@ public class MovePlayer : MonoBehaviour
 
         camRoot.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if(Input.GetButton("Jump") && isGrounded)
         {
+            
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 

@@ -46,6 +46,5 @@ public class PlayerShooting : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         isStretching = false;
         isReadyToShoot = true;
-        Debug.Log("ready to shoot");
     }
 }
