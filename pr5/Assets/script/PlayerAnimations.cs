@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
-    private PlayerShooting playerShooting;
     private Animator animator;
 
     private float animationHorizontal = 0f;
@@ -14,33 +13,11 @@ public class PlayerAnimations : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        playerShooting = GetComponent<PlayerShooting>();
     }
 
     private void Update()
     {
         MovementAnimations();
-        AimingAnimations();
-    }
-
-    private void AimingAnimations()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            if(playerShooting.IsReadyToShoot == false && playerShooting.IsStretching == true)
-            {
-                animator.SetBool("IsStretchingBow", true);
-            }
-            if(playerShooting.IsStretching == false && playerShooting.IsReadyToShoot == true)
-            {
-                animator.SetBool("IsStretchingBow", false);
-                animator.SetBool("IsReadyToShoot", true);
-            }
-        }
-        if(Input.GetMouseButtonUp(0))
-        {
-            animator.SetBool("IsReadyToShoot", false);
-        }
     }
 
     private void MovementAnimations()

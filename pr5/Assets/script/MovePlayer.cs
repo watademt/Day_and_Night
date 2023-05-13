@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    [SerializeField] private float speed = 3.0f;
     [SerializeField] private float jumpHeight = 3f;
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float gravityDis = 0.4f;
@@ -20,6 +19,15 @@ public class MovePlayer : MonoBehaviour
     private bool isGrounded;
     private Vector3 velocity;
     private float xRotation;
+
+    private CharacterStats characterStats;
+    private float speed = 3.0f;
+
+    private void Start()
+    {
+        characterStats = GetComponent<CharacterStats>();
+        speed = characterStats.BaseMovementSpeed;
+    }
 
     void FixedUpdate()
     {
