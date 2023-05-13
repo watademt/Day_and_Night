@@ -14,18 +14,18 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private Transform graundCheck;
     [SerializeField] private LayerMask graundMask;
 
-    [SerializeField] private CharacterController player;
-
     private bool isGrounded;
     private Vector3 velocity;
     private float xRotation;
 
+    private CharacterController player;
     private CharacterStats characterStats;
     private float speed = 3.0f;
 
     private void Start()
     {
         characterStats = GetComponent<CharacterStats>();
+        player = GetComponent<CharacterController>();
         speed = characterStats.BaseMovementSpeed;
     }
 
@@ -64,5 +64,4 @@ public class MovePlayer : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         player.Move(velocity * Time.deltaTime);
     } 
-  
 }
